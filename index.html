@@ -1,5 +1,6 @@
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.02">
     <title>Weathering With Yi Lun</title>
     <link rel="stylesheet" href="weathering.css">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
@@ -10,14 +11,18 @@
                 $.get("https://api.data.gov.sg/v1/environment/2-hour-weather-forecast")
                     .done(function(result){
                         $("#table_info1 tr").not(":first").remove();
+                        $("#errorMsg").empty();
+                        let found=false;
                         for (let i=0;i<result.items[0].forecasts.length;i++){
                             if(result.items[0].forecasts[i].area.toLowerCase().includes(userInput.toLowerCase())){                           
-                            $("#table_info1").append(
+                                found=true;
+                                $("#table_info1").append(
                                 "<tr><td>"+result.items[0].forecasts[i].area+"</td><td>"+result.items[0].forecasts[i].forecast+"</td></tr>"
                             )
                             }}
-                    })
-            })
+                        if (!found){$("#errorMsg").text("No results found. Please try again.")}
+                        }
+            )})
             $("#btn_display").click(function(){
                 $.get("https://api.data.gov.sg/v1/environment/2-hour-weather-forecast")
                     .done(function(result){
@@ -35,6 +40,7 @@
     <img src="rainbow.png" alt="">
     <h1>Weathering With Yi Lun</h1>
     <h6>*Updated bihourly from NEA</h6>
+    <div id="errorMsg"></div>
     <input type="text" id="search">
     <button id="btn_display1">Search Area</button>
     <table id="table_info1">
