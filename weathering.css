@@ -32,6 +32,6 @@ footer{
 
 @media only screen and (max-width: 600px) {
     * {
-      zoom: 1.5;
+      zoom: 2.0;
     }
   }
