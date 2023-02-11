@@ -21,6 +21,9 @@ table{
     text-align: centre;
      
 }
+table tr:first-child {
+    display:none;
+  }
 .headers{
     font-weight: bold;
 }

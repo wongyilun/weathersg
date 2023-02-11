@@ -1,33 +1,42 @@
 <html>
+
 <head>
     <title>Weathering With Yi Lun</title>
     <link rel="stylesheet" href="weathering.css">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $("#btn_display1").click(function(){
-                let userInput=$("#search").val();
+        $(document).ready(function () {
+            $("#btn_display1").click(function () {
+                let userInput = $("#search").val();
                 $.get("https://api.data.gov.sg/v1/environment/2-hour-weather-forecast")
-                    .done(function(result){
+                    .done(function (result) {
                         $("#table_info1 tr").not(":first").remove();
+                        $("#table_info1 tr:first-child").show();
                         $("#errorMsg").empty();
-                        let found=false;
-                        for (let i=0;i<result.items[0].forecasts.length;i++){
-                            if(result.items[0].forecasts[i].area.toLowerCase().includes(userInput.toLowerCase())){                           
-                                found=true;
+                        let found = false;
+                        for (let i = 0; i < result.items[0].forecasts.length; i++) {
+                            if (userInput.trim() == "") { $("#errorMsg").text("No results found. Please try again.") }
+                            else if (result.items[0].forecasts[i].area.toLowerCase().includes(userInput.toLowerCase())) {
+                                found = true;
                                 $("#table_info1").append(
-                                "<tr><td>"+result.items[0].forecasts[i].area+"</td><td>"+result.items[0].forecasts[i].forecast+"</td></tr>"
-                            )
-                            }}
-                        if (!found){$("#errorMsg").text("No results found. Please try again.")}
+                                    "<tr><td>" + result.items[0].forecasts[i].area + "</td><td>" + result.items[0].forecasts[i].forecast + "</td></tr>"
+                                )
+                            }
                         }
-            )})
-            $("#btn_display").click(function(){
+                        if (!found) {
+                            $("#errorMsg").text("No results found. Please try again.");
+                            $("#table_info1 tr:first-child").hide();
+                        }
+                    }
+                    )
+            })
+            $("#btn_display").click(function () {
                 $.get("https://api.data.gov.sg/v1/environment/2-hour-weather-forecast")
-                    .done(function(result){
-                        for (let i=0;i<result.items[0].forecasts.length;i++){
+                    .done(function (result) {
+                        $("#table_info tr:first-child").show();
+                        for (let i = 0; i < result.items[0].forecasts.length; i++) {
                             $("#table_info").append(
-                                "<tr><td>"+result.items[0].forecasts[i].area+"</td><td>"+result.items[0].forecasts[i].forecast+"</td></tr>"
+                                "<tr><td>" + result.items[0].forecasts[i].area + "</td><td>" + result.items[0].forecasts[i].forecast + "</td></tr>"
                             )
                         }
                     })
@@ -35,6 +44,7 @@
         })
     </script>
 </head>
+
 <body>
     <img src="rainbow.png" alt="">
     <h1>Weathering With Yi Lun</h1>
@@ -58,6 +68,8 @@
     </table>
 </body>
 <footer>
-    Credits to <a href="https://www.flaticon.com/free-icons/rainbow" title="rainbow icons">Freepik - Flaticon</a> for rainbow icon
+    Credits to <a href="https://www.flaticon.com/free-icons/rainbow" title="rainbow icons">Freepik - Flaticon</a> for
+    rainbow icon
 </footer>
+
 </html>
