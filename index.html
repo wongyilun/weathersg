@@ -36,6 +36,7 @@
             $("#btn_display").click(function () {
                 $.get("https://api.data.gov.sg/v1/environment/2-hour-weather-forecast")
                     .done(function (result) {
+                        $("#table_info tr").not(":first").remove();
                         $("#table_info tr:first-child").show();
                         for (let i = 0; i < result.items[0].forecasts.length; i++) {
                             $("#table_info").append(
