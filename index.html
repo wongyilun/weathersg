@@ -6,6 +6,16 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script>
         $(document).ready(function () {
+            $.get("https://api.data.gov.sg/v1/environment/2-hour-weather-forecast")
+                    .done(function (result) {
+                        $("#table_info tr").not(":first").remove();
+                        $("#table_info tr:first-child").show();
+                        for (let i = 0; i < result.items[0].forecasts.length; i++) {
+                            $("#table_info").append(
+                                "<tr><td>" + result.items[0].forecasts[i].area + "</td><td>" + result.items[0].forecasts[i].forecast + "</td></tr>"
+                            )
+                        }
+                    })
             //$("#btn_display1").click(function () {
             // $("#btn_display1, #search").on("click keyup", function(event) {
             // if (event.type === "click" || event.type === "keyup") {
@@ -18,8 +28,8 @@
                         $("#errorMsg").empty();
                         let found = false;
                         for (let i = 0; i < result.items[0].forecasts.length; i++) {
-                            if (userInput.trim() == "") { $("#errorMsg").text("No results found. Please try again.") }
-                            else if (result.items[0].forecasts[i].area.toLowerCase().includes(userInput.toLowerCase())) {
+                            //if (userInput.trim() == "") { $("#errorMsg").text("No results found. Please try again.") }
+                                if (result.items[0].forecasts[i].area.toLowerCase().includes(userInput.toLowerCase())) {
                                 found = true;
                                 $("#table_info").append(
                                     "<tr><td>" + result.items[0].forecasts[i].area + "</td><td>" + result.items[0].forecasts[i].forecast + "</td></tr>"
@@ -36,6 +46,8 @@
             $("#btn_display").click(function () {
                 $.get("https://api.data.gov.sg/v1/environment/2-hour-weather-forecast")
                     .done(function (result) {
+                        $("#errorMsg").empty();
+                        $("#search").val("");
                         $("#table_info tr").not(":first").remove();
                         $("#table_info tr:first-child").show();
                         for (let i = 0; i < result.items[0].forecasts.length; i++) {
@@ -55,8 +67,9 @@
     <h6>*Updated bihourly from NEA</h6>
     <div id="errorMsg"></div>
     <div id="inputNBtn">
+        <label for="search">Filter By Area: </label>
         <input type="text" id="search">
-        <button id="btn_display">Display All Areas</button>
+        <button id="btn_display">Reset</button>
     </div>
     <table id="table_info">
         <tr class="headers">
