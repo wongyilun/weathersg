@@ -16,14 +16,19 @@ h6{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-top: 0;
 }
-table{
-    margin:0 auto;
-    text-align: centre;
-     
+table {
+  margin: 0 auto;
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 table tr:first-child {
-    display:none;
-  }
+  display: none;
+}
+table td {
+  padding: 10px;
+}
+
 .headers{
     font-weight: bold;
 }
@@ -34,14 +39,15 @@ table tr:first-child {
   } */
   
 #search {
-    width: 300px;
+    width: 80px;
     height: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 5px 0;
   }
   
 #btn_display {
-    width: 65px;
+    width: 80%;
     height: 30px;
+    margin:5px 0;
     background-color: #4f9cff;
     color: #b8ffff;
     border: none;
@@ -53,7 +59,33 @@ footer{
     margin: 190px auto 30px;
 }
 @media only screen and (max-width: 600px) {
-    * {
-      zoom: 1.5;
-    }
+  * {
+    zoom: 1.5;
   }
+  h1 {
+    font-size: 24px;
+  }
+  h6 {
+    font-size: 14px;
+  }
+  table {
+    font-size: 12px;
+  }
+  table td {
+    padding: 5px;
+  }
+  #search {
+    width: 80%;
+    height: 25px;
+    font-size: 12px;
+  }
+  #btn_display {
+    width: 30%;
+    height: 25px;
+    font-size: 12px;
+  }
+  footer {
+    font-size: 10px;
+    margin: 10px auto 5px;
+  }
+}
