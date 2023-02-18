@@ -53,7 +53,33 @@ footer{
     margin: 190px auto 30px;
 }
 @media only screen and (max-width: 600px) {
-    * {
-      zoom: 1.5;
-    }
+  * {
+    zoom: 1.5;
   }
+  h1 {
+    font-size: 24px;
+  }
+  h6 {
+    font-size: 14px;
+  }
+  table {
+    font-size: 12px;
+  }
+  table td {
+    padding: 5px;
+  }
+  #search {
+    width: 80%;
+    height: 25px;
+    font-size: 12px;
+  }
+  #btn_display {
+    width: 30%;
+    height: 25px;
+    font-size: 12px;
+  }
+  footer {
+    font-size: 10px;
+    margin: 10px auto 5px;
+  }
+}
