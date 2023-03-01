@@ -8,15 +8,15 @@
     <script>
         $(document).ready(function () {
             $.get("https://api.data.gov.sg/v1/environment/2-hour-weather-forecast")
-                    .done(function (result) {
-                        $("#table_info tr").not(":first").remove();
-                        $("#table_info tr:first-child").show();
-                        for (let i = 0; i < result.items[0].forecasts.length; i++) {
-                            $("#table_info").append(
-                                "<tr><td>" + result.items[0].forecasts[i].area + "</td><td>" + result.items[0].forecasts[i].forecast + "</td></tr>"
-                            )
-                        }
-                    })
+                .done(function (result) {
+                    $("#table_info tr").not(":first").remove();
+                    $("#table_info tr:first-child").show();
+                    for (let i = 0; i < result.items[0].forecasts.length; i++) {
+                        $("#table_info").append(
+                            "<tr><td>" + result.items[0].forecasts[i].area + "</td><td>" + result.items[0].forecasts[i].forecast + "</td></tr>"
+                        )
+                    }
+                })
             //$("#btn_display1").click(function () {
             // $("#btn_display1, #search").on("click keyup", function(event) {
             // if (event.type === "click" || event.type === "keyup") {
@@ -30,7 +30,7 @@
                         let found = false;
                         for (let i = 0; i < result.items[0].forecasts.length; i++) {
                             //if (userInput.trim() == "") { $("#errorMsg").text("No results found. Please try again.") }
-                                if (result.items[0].forecasts[i].area.toLowerCase().includes(userInput.toLowerCase())) {
+                            if (result.items[0].forecasts[i].area.toLowerCase().includes(userInput.toLowerCase())) {
                                 found = true;
                                 $("#table_info").append(
                                     "<tr><td>" + result.items[0].forecasts[i].area + "</td><td>" + result.items[0].forecasts[i].forecast + "</td></tr>"
@@ -43,7 +43,7 @@
                         }
                     }
                     )
-        })
+            })
             $("#btn_display").click(function () {
                 $.get("https://api.data.gov.sg/v1/environment/2-hour-weather-forecast")
                     .done(function (result) {

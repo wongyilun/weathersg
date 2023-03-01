@@ -9,99 +9,76 @@
         $(document).ready(function () {
             $.get("https://api.data.gov.sg/v1/environment/24-hour-weather-forecast")
                 .done(function (result) {
-                    if(result.items[0].periods[0].time.start.includes("12:00:00+08:00"))
-                    {$("#firstTime").append("12PM-6PM");}
-                    else if (result.items[0].periods[0].time.start.includes("18:00:00+08:00"))
-                    {$("#firstTime").append("6PM-6AM");}
-                    else {$("#firstTime").append("6AM-12PM");}
+                    if (result.items[0].periods[0].time.start.includes("12:00:00+08:00")) { $("#firstTime").append("12PM-6PM"); }
+                    else if (result.items[0].periods[0].time.start.includes("18:00:00+08:00")) { $("#firstTime").append("6PM-6AM"); }
+                    else { $("#firstTime").append("6AM-12PM"); }
 
-                    if(result.items[0].periods[1].time.start.includes("12:00:00+08:00"))
-                    {$("#secondTime").append("12PM-6PM");}
-                    else if (result.items[0].periods[1].time.start.includes("18:00:00+08:00"))
-                    {$("#secondTime").append("6PM-6AM");}
-                    else {$("#secondTime").append("6AM-12PM");}
+                    if (result.items[0].periods[1].time.start.includes("12:00:00+08:00")) { $("#secondTime").append("12PM-6PM"); }
+                    else if (result.items[0].periods[1].time.start.includes("18:00:00+08:00")) { $("#secondTime").append("6PM-6AM"); }
+                    else { $("#secondTime").append("6AM-12PM"); }
 
-                    if(result.items[0].periods[2].time.start.includes("12:00:00+08:00"))
-                    {$("#thirdTime").append("12PM-6PM");}
-                    else if (result.items[0].periods[2].time.start.includes("18:00:00+08:00"))
-                    {$("#thirdTime").append("6PM-6AM");}
-                    else {$("#thirdTime").append("6AM-12PM");}
+                    if (result.items[0].periods[2].time.start.includes("12:00:00+08:00")) { $("#thirdTime").append("12PM-6PM"); }
+                    else if (result.items[0].periods[2].time.start.includes("18:00:00+08:00")) { $("#thirdTime").append("6PM-6AM"); }
+                    else { $("#thirdTime").append("6AM-12PM"); }
 
-                    $("#region0").append(
-                        result.items[0].periods[0].regions.north);
-                        $("#region1").append(
-                            result.items[0].periods[1].regions.north);
-                        $("#region2").append(
-                            result.items[0].periods[2].regions.north);
+                    $("#region0").append(result.items[0].periods[0].regions.north);
+                    $("#region1").append(result.items[0].periods[1].regions.north);
+                    $("#region2").append(result.items[0].periods[2].regions.north);
                 })
 
-                $("#north").click(function () {
+            $("#north").click(function () {
                 $.get("https://api.data.gov.sg/v1/environment/24-hour-weather-forecast")
                     .done(function (result) {
-                        $("#region0").empty();$("#region1").empty();$("#region2").empty();
-                        $("#region0").append(
-                        result.items[0].periods[0].regions.north);
-                        $("#region1").append(
-                            result.items[0].periods[1].regions.north);
-                        $("#region2").append(
-                            result.items[0].periods[2].regions.north);
+                        $("#region0").empty(); $("#region1").empty(); $("#region2").empty();
+                        $("#region0").append(result.items[0].periods[0].regions.north);
+                        $("#region1").append(result.items[0].periods[1].regions.north);
+                        $("#region2").append(result.items[0].periods[2].regions.north);
                     })
-                })
-
-                $("#south").click(function () {
-                $.get("https://api.data.gov.sg/v1/environment/24-hour-weather-forecast")
-                    .done(function (result) {
-                        $("#region0").empty();$("#region1").empty();$("#region2").empty();
-                        $("#region0").append(
-                        result.items[0].periods[0].regions.south);
-                        $("#region1").append(
-                            result.items[0].periods[1].regions.south);
-                        $("#region2").append(
-                            result.items[0].periods[2].regions.south);
-                    })
-                })
-
-                $("#west").click(function () {
-                $.get("https://api.data.gov.sg/v1/environment/24-hour-weather-forecast")
-                    .done(function (result) {
-                        $("#region0").empty();$("#region1").empty();$("#region2").empty();
-                        $("#region0").append(
-                        result.items[0].periods[0].regions.west);
-                        $("#region1").append(
-                            result.items[0].periods[1].regions.west);
-                        $("#region2").append(
-                            result.items[0].periods[2].regions.west);
-                    })
-                })
-
-                $("#east").click(function () {
-                $.get("https://api.data.gov.sg/v1/environment/24-hour-weather-forecast")
-                    .done(function (result) {
-                        $("#region0").empty();$("#region1").empty();$("#region2").empty();
-                        $("#region0").append(
-                        result.items[0].periods[0].regions.east);
-                        $("#region1").append(
-                            result.items[0].periods[1].regions.east);
-                        $("#region2").append(
-                            result.items[0].periods[2].regions.east);
-                    })
-                })
-
-                $("#central").click(function () {
-                $.get("https://api.data.gov.sg/v1/environment/24-hour-weather-forecast")
-                    .done(function (result) {
-                        $("#region0").empty();$("#region1").empty();$("#region2").empty();
-                        $("#region0").append(
-                        result.items[0].periods[0].regions.central);
-                        $("#region1").append(
-                            result.items[0].periods[1].regions.central);
-                        $("#region2").append(
-                            result.items[0].periods[2].regions.central);
-                    })
-                })
             })
+
+            $("#south").click(function () {
+                $.get("https://api.data.gov.sg/v1/environment/24-hour-weather-forecast")
+                    .done(function (result) {
+                        $("#region0").empty(); $("#region1").empty(); $("#region2").empty();
+                        $("#region0").append(result.items[0].periods[0].regions.south);
+                        $("#region1").append(result.items[0].periods[1].regions.south);
+                        $("#region2").append(result.items[0].periods[2].regions.south);
+                    })
+            })
+
+            $("#west").click(function () {
+                $.get("https://api.data.gov.sg/v1/environment/24-hour-weather-forecast")
+                    .done(function (result) {
+                        $("#region0").empty(); $("#region1").empty(); $("#region2").empty();
+                        $("#region0").append(result.items[0].periods[0].regions.west);
+                        $("#region1").append(result.items[0].periods[1].regions.west);
+                        $("#region2").append(result.items[0].periods[2].regions.west);
+                    })
+            })
+
+            $("#east").click(function () {
+                $.get("https://api.data.gov.sg/v1/environment/24-hour-weather-forecast")
+                    .done(function (result) {
+                        $("#region0").empty(); $("#region1").empty(); $("#region2").empty();
+                        $("#region0").append(result.items[0].periods[0].regions.east);
+                        $("#region1").append(result.items[0].periods[1].regions.east);
+                        $("#region2").append(result.items[0].periods[2].regions.east);
+                    })
+            })
+
+            $("#central").click(function () {
+                $.get("https://api.data.gov.sg/v1/environment/24-hour-weather-forecast")
+                    .done(function (result) {
+                        $("#region0").empty(); $("#region1").empty(); $("#region2").empty();
+                        $("#region0").append(result.items[0].periods[0].regions.central);
+                        $("#region1").append(result.items[0].periods[1].regions.central);
+                        $("#region2").append(result.items[0].periods[2].regions.central);
+                    })
+            })
+        })
     </script>
 </head>
+
 <body>
     <img src="rainbow.png" alt="">
     <h1>Weathering With Lun</h1>
@@ -144,9 +121,9 @@
                         <td id="region1"></td>
                     </tr>
                     <tr>
-                        <td  id="thirdTime"></td>
+                        <td id="thirdTime"></td>
                         <td id="region2"></td>
-                    </tr>      
+                    </tr>
                 </tbody>
             </table>
         </div>
