@@ -28,16 +28,24 @@
                     else {$("#thirdTime").append("6AM-12PM");}
 
                     $("#region0").append(
-                        result.items[0].periods[0].regions.north
-                    );
-                    $("#region1").append(
-                        result.items[0].periods[1].regions.north
-                    );
-                    $("#region2").append(
-                        result.items[0].periods[2].regions.north
-                    );
+                        result.items[0].periods[0].regions.north);
+                        $("#region1").append(
+                            result.items[0].periods[1].regions.north);
+                        $("#region2").append(
+                            result.items[0].periods[2].regions.north);
+                })
 
-
+                $("#north").click(function () {
+                $.get("https://api.data.gov.sg/v1/environment/24-hour-weather-forecast")
+                    .done(function (result) {
+                        $("#region0").empty();$("#region1").empty();$("#region2").empty();
+                        $("#region0").append(
+                        result.items[0].periods[0].regions.north);
+                        $("#region1").append(
+                            result.items[0].periods[1].regions.north);
+                        $("#region2").append(
+                            result.items[0].periods[2].regions.north);
+                    })
                 })
 
                 $("#south").click(function () {
@@ -109,11 +117,11 @@
         <div class="column">
             <nav id="nav24">
                 <ul>
-                    <li><a href="24hours.html" id="north">North</a></li>
-                    <li><a href="24hours.html" id="south">South</a></li>
-                    <li><a href="24hours.html" id="east">East</a></li>
-                    <li><a href="24hours.html" id="west">West</a></li>
-                    <li><a href="24hours.html" id="central">Central</a></li>
+                    <li><a id="north">North</a></li>
+                    <li><a id="south">South</a></li>
+                    <li><a id="east">East</a></li>
+                    <li><a id="west">West</a></li>
+                    <li><a id="central">Central</a></li>
 
                 </ul>
             </nav>
