@@ -10,7 +10,7 @@
             $.get("https://api.data.gov.sg/v1/environment/24-hour-weather-forecast")
                 .done(function (result) {
                     if (result.items[0].periods[0].time.start.includes("12:00:00+08:00")) { $("#firstTime").append("12PM-6PM"); }
-                    else if (result.items[0].periods[0].time.start.includes("18:00:00+08:00")) { $("#firstTime").append("6PM-6AM"); }
+                    else if (result.items[0].periods[0].time.start.includes("18:00:00+08:00")) { $("#firstTime").append("6PM-6AM (Night)"); }
                     else { $("#firstTime").append("6AM-12PM"); }
 
                     if (result.items[0].periods[1].time.start.includes("12:00:00+08:00")) { $("#secondTime").append("12PM-6PM"); }
@@ -103,15 +103,14 @@
                 </ul>
             </nav>
         </div>
+        <br><br>
         <div class="column">
             <table id="table_24hinfo">
-                <thead>
-                    <tr>
-                        <th>Time</th>
-                        <th>Forecast</th>
-                    </tr>
-                </thead>
                 <tbody>
+                    <tr class="headers">
+                        <td>Time</td>
+                        <td>Forecast</td>
+                    </tr>
                     <tr>
                         <td id="firstTime"></td>
                         <td id="region0"></td>
