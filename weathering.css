@@ -91,11 +91,21 @@ h6 {
   background-color: #4D6D9A;
 }
 
-#table_24hinfo {
+#table_24hinfo , #table_24hinfo td {
   margin: auto;
   text-align: centre;
+  width: 90%;
+  border: 1px solid #3B3B3B;
+  border-collapse: collapse;
 }
-
+#table_4dinfo,#table_4dinfo td {
+  margin: auto;
+  padding: 1%;
+  text-align: centre;
+  width:27%;
+  border: 1px solid #3B3B3B;
+  border-collapse: collapse;
+}
 * {
   box-sizing: border-box;
 }
@@ -116,8 +126,7 @@ h6 {
   display: table;
 }
 
-#table_info,
-#table_4dinfo {
+#table_info {
   margin: 0 auto;
   text-align: centre;
 }

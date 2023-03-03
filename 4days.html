@@ -6,6 +6,29 @@
     <link rel="stylesheet" href="weathering.css">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script>
+        $(document).ready(function () {
+            $.get("https://api.data.gov.sg/v1/environment/4-day-weather-forecast")
+                .done(function (result) {
+                    for (let i = 0; i < result.items[0].forecasts.length; i++) {
+                        $("#table_4dinfo").append(
+                            "<tr><td>" + result.items[0].forecasts[i].date + "</td><td>" + result.items[0].forecasts[i].forecast + "</td></tr>"
+                        )
+                    }
+                    $("#day1").append(result.items[0].forecasts[0].date);
+
+                    if (result.items[0].periods[1].time.start.includes("12:00:00+08:00")) { $("#secondTime").append("12PM-6PM (Aftnoon)"); }
+                    else if (result.items[0].periods[1].time.start.includes("18:00:00+08:00")) { $("#secondTime").append("6PM-6AM (Night)"); }
+                    else { $("#secondTime").append("6AM-12PM (Morning)"); }
+
+                    if (result.items[0].periods[2].time.start.includes("12:00:00+08:00")) { $("#thirdTime").append("12PM-6PM (Aftnoon)"); }
+                    else if (result.items[0].periods[2].time.start.includes("18:00:00+08:00")) { $("#thirdTime").append("6PM-6AM (Night)"); }
+                    else { $("#thirdTime").append("6AM-12PM (Morning)"); }
+
+                    $("#region0").append(result.items[0].periods[0].regions.north);
+                    $("#region1").append(result.items[0].periods[1].regions.north);
+                    $("#region2").append(result.items[0].periods[2].regions.north);
+                })
+        })
     </script>
 </head>
 
@@ -21,29 +44,12 @@
         </ul>
     </nav>
     <div>
-        This tab will be ready soon!&#128515;
-        <!-- <table id="table_4dinfo">
+        <table id="table_4dinfo">
             <tr class="headers">
                 <td>Date</td>
                 <td>Forecast</td>
             </tr>
-            <tr>
-                <td>Day 1</td>
-                <td>Day 1 Forecast</td>
-            </tr>
-            <tr>
-                <td>Day 2</td>
-                <td>Day 2 Forecast</td>
-            </tr>
-            <tr>
-                <td>Day 3</td>
-                <td>Day 3 Forecast</td>
-            </tr>
-            <tr>
-                <td>Day 4</td>
-                <td>Day 4 Forecast</td>
-            </tr>
-        </table> -->
+        </table>
     </div>
 </body>
 <footer>
