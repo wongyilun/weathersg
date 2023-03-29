@@ -75,6 +75,10 @@
                         $("#region2").append(result.items[0].periods[2].regions.central);
                     })
             })
+            $("nav ul li a").click(function() {
+                $("nav ul li a").removeClass("active");
+                $(this).addClass("active");
+            });
         })
     </script>
 </head>

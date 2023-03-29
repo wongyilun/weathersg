@@ -58,7 +58,7 @@ h6 {
   background-color: #4f9cff;
 }
 
-#mainnav>ul>li>a:active {
+#mainnav>ul>li>a.active {
   background-color: #4D6D9A;
 }
 
@@ -87,8 +87,8 @@ h6 {
   background-color: #32de84;
 }
 
-#nav24>ul>li>a:active {
-  background-color: #4D6D9A;
+#nav24>ul>li>a.active {
+  background-color: #7E9ECB;
 }
 
 #table_24hinfo , #table_24hinfo td {
