@@ -58,7 +58,7 @@ h6 {
   background-color: #4f9cff;
 }
 
-#mainnav>ul>li>a.active {
+#mainnav>ul>li>a:active {
   background-color: #4D6D9A;
 }
 
