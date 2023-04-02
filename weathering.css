@@ -94,7 +94,7 @@ h6 {
 #table_24hinfo , #table_24hinfo td {
   margin: auto;
   text-align: centre;
-  width: 90%;
+  width: 200px;
   border: 1px solid #3B3B3B;
   border-collapse: collapse;
 }
@@ -102,7 +102,7 @@ h6 {
   margin: auto;
   padding: 1%;
   text-align: centre;
-  width:27%;
+  width:300px;
   border: 1px solid #3B3B3B;
   border-collapse: collapse;
 }
@@ -204,3 +204,9 @@ footer {
     margin: 10px auto 5px;
   }
 }
+@media only screen and (max-width: 600px) {
+  * {
+    width: 100%;
+  }
+  
+}  
