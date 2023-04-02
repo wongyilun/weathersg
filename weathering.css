@@ -22,14 +22,12 @@ h6 {
 
 #mainnav {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 20%;
 }
 
 #mainnav>ul {
   display: inline-block;
   list-style-type: none;
-  margin: 0;
-  padding: 0;
   width: auto;
   height: 50px;
 }
@@ -163,11 +161,10 @@ footer {
   text-decoration: none;
   margin: 190px auto 30px;
 }
-
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 700px) {
   #mainnav {
-    margin-bottom: 20% !important;
-  }}
+    margin-bottom: 2%;
+  }} 
 
 /* @media only screen and (max-width: 600px) {
   * {
